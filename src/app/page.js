@@ -79,7 +79,7 @@ export default function Home() {
               <h2 className="text-base font-medium md:text-lg">{todo.task}</h2>
               <div className="flex items-center justify-between gap-x-0">
                 <button
-                  className="w-10 h-10 grid place-items-center rounded-xl transition-[background-color] duration-150 ease-in-out hover:bg-amber-200"
+                  className="w-9 h-9 grid place-items-center rounded-xl transition-[background-color] duration-150 ease-in-out hover:bg-amber-200"
                   onClick={() => handleEdit(todo.id)}
                 >
                   <Image src={edit} alt="Edit Icon" width={24} height={24} />
