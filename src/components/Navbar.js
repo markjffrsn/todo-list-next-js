@@ -110,10 +110,6 @@ export default function Navbar() {
               >
                 <Image src={editLight} alt="Edit icon" width={24} height={24} />
                 <span className="hidden text-white md:inline">Edit</span>
-
-                <span className="absolute -bottom-[60%] right-0 underline text-sm text-red-500">
-                  cancel
-                </span>
               </button>
             )}
           </div>
