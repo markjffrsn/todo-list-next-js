@@ -73,12 +73,10 @@ export default function Home() {
         <main className="mt-9">
           {filteredItem.map((todo) => (
             <div
-              className="flex items-center justify-between py-6 border-b border-b-gray-300"
+              className="flex items-center justify-between py-5 border-b border-b-gray-300"
               key={todo.id}
             >
-              <h2 className="text-[1rem] font-medium md:text-lg">
-                {todo.task}
-              </h2>
+              <h2 className="text-base font-medium md:text-lg">{todo.task}</h2>
               <div className="flex items-center justify-between gap-x-0">
                 <button
                   className="w-10 h-10 grid place-items-center rounded-xl transition-[background-color] duration-150 ease-in-out hover:bg-amber-200"
