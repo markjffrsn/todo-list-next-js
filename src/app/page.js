@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import edit from "../../public/edit.svg";
+import editLight from "../../public/edit-light.svg";
 import del from "../../public/delete.svg";
 import noItem from "../../public/new.svg";
 import { useTodoListContext } from "@/context/TodoListContext";
@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     try {
       const todo = localStorage.getItem("todolist");
-      const finalTodo = todo ? JSON.parse(todo) : [];
+      const finalTodo = todo && JSON.parse(todo);
       setTodoList(finalTodo);
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export default function Home() {
     } catch (error) {
       console.log(error);
     }
-  }, [todoList, setFilteredItem]);
+  }, [todoList]);
 
   const handleDelete = (propsId) => {
     if (filteredItem.length === 1) {
@@ -73,19 +73,24 @@ export default function Home() {
         <main className="mt-9">
           {filteredItem.map((todo) => (
             <div
-              className="flex items-center justify-between py-5 border-b border-b-gray-300"
+              className="flex items-center justify-between py-8 border-b border-b-gray-300"
               key={todo.id}
             >
               <h2 className="text-base font-medium md:text-lg">{todo.task}</h2>
-              <div className="flex items-center justify-between gap-x-0">
+              <div className="flex items-center justify-between gap-x-2">
                 <button
-                  className="w-9 h-9 grid place-items-center rounded-xl transition-[background-color] duration-150 ease-in-out hover:bg-amber-200"
+                  className="btn bg-transparent border-amber-500 hover:bg-transparent hover:border-amber-400"
                   onClick={() => handleEdit(todo.id)}
                 >
-                  <Image src={edit} alt="Edit Icon" width={24} height={24} />
+                  <Image
+                    src={editLight}
+                    alt="Edit Icon"
+                    width={24}
+                    height={24}
+                  />
                 </button>
                 <button
-                  className="w-9 h-9 grid place-items-center rounded-xl transition-[background-color] duration-150 ease-in-out hover:bg-red-300"
+                  className="btn bg-transparent border-red-500 hover:bg-transparent hover:border-red-400"
                   onClick={() => handleDelete(todo.id)}
                 >
                   <Image src={del} alt="Delete Icon" width={24} height={24} />
