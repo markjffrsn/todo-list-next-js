@@ -12,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="light">
-      <body className={`${inter.className} container mx-auto`}>
+    <html lang="en" data-theme="dark">
+      <body className={`${inter.className} container mx-auto text-white`}>
         <TodoContextProvider>
           <Navbar />
           {children}

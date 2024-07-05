@@ -70,7 +70,7 @@ export default function Navbar() {
     const htmlElement = document.documentElement;
     const body = document.body;
 
-    if (theme) {
+    if (!theme) {
       htmlElement.setAttribute("data-theme", "dark");
       body.classList.add("text-white");
     } else {
@@ -141,6 +141,7 @@ export default function Navbar() {
               value="synthwave"
               className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
               onClick={handleTheme}
+              defaultChecked
             />
             <svg
               className="stroke-base-100 fill-base-100 col-start-1 row-start-1"

@@ -92,7 +92,7 @@ export default function Home() {
                   onClick={() => handleEdit(todo.id)}
                 >
                   <Image
-                    src={theme ? editDark : editLight}
+                    src={!theme ? editDark : editLight}
                     alt="Edit Icon"
                     width={24}
                     height={24}
@@ -103,7 +103,7 @@ export default function Home() {
                   onClick={() => handleDelete(todo.id)}
                 >
                   <Image
-                    src={theme ? delDark : delLight}
+                    src={!theme ? delDark : delLight}
                     alt="Delete Icon"
                     width={24}
                     height={24}
@@ -117,7 +117,7 @@ export default function Home() {
         <section className="h-[80vh] flex items-center justify-center gap-2 flex-col text-lg">
           <div className="grid place-items-center">
             <Image
-              src={theme ? newDark : newLight}
+              src={!theme ? newDark : newLight}
               alt="Note icon"
               width={36}
               height={36}
