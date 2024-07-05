@@ -16,6 +16,7 @@ export default function Home() {
     todoList,
     setTodoList,
     inputRef,
+    isEdit,
     setIsEdit,
     filteredItem,
     setFilteredItem,
@@ -62,6 +63,11 @@ export default function Home() {
     }
 
     setTodoList((prev) => prev.filter((todo) => todo.id !== propsId));
+
+    if (isEdit) {
+      inputRef.current.value = "";
+      setIsEdit(false);
+    }
   };
 
   const handleEdit = (propsId) => {
