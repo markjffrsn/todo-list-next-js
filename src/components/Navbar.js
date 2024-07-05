@@ -3,7 +3,7 @@
 import Image from "next/image";
 import logo from "../../public/logo.svg";
 import add from "../../public/add.svg";
-import edit from "../../public/edit.svg";
+import editDark from "../../public/edit-dark.svg";
 import editLight from "../../public/edit-light.svg";
 import { useTodoListContext } from "@/context/TodoListContext";
 
@@ -18,7 +18,6 @@ export default function Navbar() {
     setIsEdit,
     id,
     setFilteredItem,
-    themeRef,
     theme,
     setTheme,
   } = useTodoListContext();
@@ -49,9 +48,11 @@ export default function Navbar() {
     localStorage.setItem("todolist", JSON.stringify(updatedTodoList));
     setTodoList(updatedTodoList);
     setTask("");
+
     if (inputRef.current) {
       inputRef.current.value = "";
     }
+
     setIsEdit(false);
   };
 
@@ -84,7 +85,7 @@ export default function Navbar() {
         <a className="flex items-center justify-center gap-x-2 md:gap-x-4">
           <Image src={logo} alt="Todo List Logo" width={32} height={32} />
           <span className="hidden text-2xl font-bold md:text-3xl md:block">
-            Todo List
+            Docket
           </span>
         </a>
 

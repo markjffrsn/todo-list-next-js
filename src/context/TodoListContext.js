@@ -11,8 +11,7 @@ export const TodoContextProvider = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
   const inputRef = useRef();
   const [isEdit, setIsEdit] = useState(false);
-  const [filteredItem, setFilteredItem] = useState(todoList);
-  const themeRef = useRef();
+  const [filteredItem, setFilteredItem] = useState([]);
   const [theme, setTheme] = useState(true);
 
   return (
@@ -28,7 +27,6 @@ export const TodoContextProvider = ({ children }) => {
         id,
         filteredItem,
         setFilteredItem,
-        themeRef,
         theme,
         setTheme,
       }}

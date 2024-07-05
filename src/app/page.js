@@ -2,9 +2,12 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import editDark from "../../public/edit-dark.svg";
 import editLight from "../../public/edit-light.svg";
-import del from "../../public/delete.svg";
-import noItem from "../../public/new.svg";
+import delDark from "../../public/delete-dark.svg";
+import delLight from "../../public/delete-light.svg";
+import newDark from "../../public/new-dark.svg";
+import newLight from "../../public/new-light.svg";
 import { useTodoListContext } from "@/context/TodoListContext";
 
 export default function Home() {
@@ -16,6 +19,7 @@ export default function Home() {
     setIsEdit,
     filteredItem,
     setFilteredItem,
+    theme,
   } = useTodoListContext();
 
   useEffect(() => {
@@ -30,15 +34,20 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      setFilteredItem(todoList);
+      if (todoList === null) {
+        setTodoList([]);
+      }
+
       const isLastItem = localStorage.getItem("isLastItem");
 
-      if (todoList.length > 0 || isLastItem) {
+      if ((todoList && todoList.length > 0) || isLastItem) {
         localStorage.setItem("todolist", JSON.stringify(todoList));
 
         if (isLastItem) {
           localStorage.removeItem("isLastItem");
         }
+
+        setFilteredItem(todoList);
       } else {
         console.log("empty");
       }
@@ -69,7 +78,7 @@ export default function Home() {
 
   return (
     <>
-      {filteredItem.length > 0 ? (
+      {filteredItem && filteredItem.length > 0 ? (
         <main className="mt-9">
           {filteredItem.map((todo) => (
             <div
@@ -83,7 +92,7 @@ export default function Home() {
                   onClick={() => handleEdit(todo.id)}
                 >
                   <Image
-                    src={editLight}
+                    src={theme ? editDark : editLight}
                     alt="Edit Icon"
                     width={24}
                     height={24}
@@ -93,7 +102,12 @@ export default function Home() {
                   className="btn bg-transparent border-red-500 hover:bg-transparent hover:border-red-400"
                   onClick={() => handleDelete(todo.id)}
                 >
-                  <Image src={del} alt="Delete Icon" width={24} height={24} />
+                  <Image
+                    src={theme ? delDark : delLight}
+                    alt="Delete Icon"
+                    width={24}
+                    height={24}
+                  />
                 </button>
               </div>
             </div>
@@ -102,7 +116,12 @@ export default function Home() {
       ) : (
         <section className="h-[80vh] flex items-center justify-center gap-2 flex-col text-lg">
           <div className="grid place-items-center">
-            <Image src={noItem} alt="Note icon" width={36} height={36} />
+            <Image
+              src={theme ? newDark : newLight}
+              alt="Note icon"
+              width={36}
+              height={36}
+            />
             <h2 className="mt-4 font-bold">No items yet</h2>
             <p>Items will appear here.</p>
           </div>
