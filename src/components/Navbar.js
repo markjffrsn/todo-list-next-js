@@ -83,7 +83,13 @@ export default function Navbar() {
     <header className="mt-6">
       <nav className="flex items-center justify-between gap-x-4">
         <a className="flex items-center justify-center gap-x-2 md:gap-x-4">
-          <Image src={logo} alt="Todo List Logo" width={32} height={32} />
+          <Image
+            src={logo}
+            alt="Todo List Logo"
+            width={32}
+            height={32}
+            className="-scale-x-100"
+          />
           <span className="hidden text-2xl font-bold md:text-3xl md:block">
             Docket
           </span>
